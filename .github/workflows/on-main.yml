@@ -1,0 +1,22 @@
+name: "On Main"
+
+on:
+  workflow_dispatch:
+    inputs:
+      approval:
+        description: "Do you approve?"
+        required: true
+
+jobs:
+  once_approved:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.approval == 'yes'
+    steps:
+      - name: "After Approval"
+        run: echo "awesome!"
+  not_approved:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.approval != 'yes'
+    steps:
+      - name: "Failed to approve"
+        run: echo "why don't you like nice things"
