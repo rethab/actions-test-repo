@@ -14,9 +14,10 @@ jobs:
       - uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Test XYZ
+          name: We require an action!
           conclusion: action_required
-          action_url: https://google.com
+          action_url: https://podquotes.io
+          details_url: https://digester.app
   third:
     needs: [second]
     runs-on: ubuntu-latest
