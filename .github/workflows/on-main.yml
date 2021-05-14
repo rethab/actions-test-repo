@@ -1,11 +1,6 @@
 name: "On Main"
 
-on:
-  workflow_dispatch:
-    inputs:
-      approval:
-        description: "Do you approve?"
-        required: true
+on: [pull_request]
 
 jobs:
   test:
