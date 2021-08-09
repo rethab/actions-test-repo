@@ -1,22 +1,14 @@
-name: "On Main"
+name: "Problem Matcher Test"
 
-on:
-  workflow_dispatch:
-    inputs:
-      approval:
-        description: "Do you approve?"
-        required: true
+on: push
 
 jobs:
-  once_approved:
+  build:
     runs-on: ubuntu-latest
-    if: github.event.inputs.approval == 'yes'
     steps:
-      - name: "After Approval"
-        run: echo "awesome!"
-  not_approved:
-    runs-on: ubuntu-latest
-    if: github.event.inputs.approval != 'yes'
-    steps:
-      - name: "Failed to approve"
-        run: echo "why don't you like nice things"
+      - uses: actions/checkout@v2
+      - run: ls
+      - run: echo "::add-matcher::.github/matcher.json"
+      - run: |
+          echo ".github/matcher.json:2: json error"
+      - run: echo "::remove-matcher owner=test-matcher::"
