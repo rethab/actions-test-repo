@@ -10,6 +10,5 @@ jobs:
       - run: ls
       - run: echo "::add-matcher::.github/matcher.json"
       - run: |
-          echo "myfile.txt:2: failed to read"
-          echo "some other logs"
+          echo ".github/matcher.json:2: json error"
       - run: echo "::remove-matcher owner=test-matcher::"
