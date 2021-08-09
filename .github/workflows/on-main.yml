@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "::add-matcher::.github/matcher.json"
-      - run: echo 'myfile.txt:2: failed to read'
+      - run: echo "myfile.txt:2: failed to read"
       - run: echo "::remove-matcher owner=test-matcher::"
