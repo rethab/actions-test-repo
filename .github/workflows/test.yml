@@ -3,8 +3,11 @@ on: push
 jobs:
   one:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+      uses:
+        shell: bash
     steps:
       - uses: actions/checkout@v2
-        shell: bash
-      - uses: ./
-        shell: bash
+      - run: ls
