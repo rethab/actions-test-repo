@@ -6,8 +6,6 @@ jobs:
     defaults:
       run:
         shell: bash
-      uses:
-        shell: bash
     steps:
       - uses: actions/checkout@v2
       - run: ls
