@@ -19,3 +19,10 @@ jobs:
     needs: prod
     steps:
       - run: echo bye, prod
+
+  post_post_prod:
+    runs-on: ubuntu-latest
+    needs: build
+    environment: production
+    steps:
+      - run: echo how far can we take this?
