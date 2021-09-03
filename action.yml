@@ -1,0 +1,8 @@
+description: test composite actions
+name: test composite action
+
+runs:
+  using: composite
+  steps:
+    - uses: checkout/action@v2
+    - run: echo 'hello'

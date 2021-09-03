@@ -1,0 +1,30 @@
+on: push
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello, world
+
+  prod:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: production
+      url: 
+    steps:
+      - run: echo hello, production
+
+  post_prod:
+    runs-on: ubuntu-latest
+    needs: prod
+    steps:
+      - run: echo bye, prod
+
+  post_post_prod:
+    runs-on: ubuntu-latest
+    needs: post_prod
+    environment: production
+    steps:
+      - run: echo how far can we take this?
