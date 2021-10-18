@@ -5,7 +5,9 @@ on: push
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: production
+    environment:
+      name: production
+      payload: test
     strategy:
       matrix:
         cluster: ['eu', 'us']
