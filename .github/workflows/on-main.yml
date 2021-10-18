@@ -1,22 +1,13 @@
-name: "On Main"
+name: "Multi Cluster Deployments"
 
-on:
-  workflow_dispatch:
-    inputs:
-      approval:
-        description: "Do you approve?"
-        required: true
+on: push
 
 jobs:
-  once_approved:
+  deploy:
     runs-on: ubuntu-latest
-    if: github.event.inputs.approval == 'yes'
+    strategy:
+      matrix:
+        cluster: ['eu', 'us']
     steps:
-      - name: "After Approval"
-        run: echo "awesome!"
-  not_approved:
-    runs-on: ubuntu-latest
-    if: github.event.inputs.approval != 'yes'
-    steps:
-      - name: "Failed to approve"
-        run: echo "why don't you like nice things"
+      - name: 'Deploy to ${{ matrix.cluster }}'
+        run: echo "Deploy to ${{ matrix.cluster }}"
