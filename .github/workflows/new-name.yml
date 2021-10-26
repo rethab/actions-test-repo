@@ -1,4 +1,4 @@
-name: Stampot
+name: Bockworst
 
 on: push
   
@@ -7,4 +7,4 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "awesome!"
+      - run: exit 1
