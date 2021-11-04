@@ -1,22 +1,25 @@
 name: "On Main"
 
-on:
-  workflow_dispatch:
-    inputs:
-      approval:
-        description: "Do you approve?"
-        required: true
+on: [pull_request]
 
 jobs:
-  once_approved:
+  first:
     runs-on: ubuntu-latest
-    if: github.event.inputs.approval == 'yes'
     steps:
-      - name: "After Approval"
-        run: echo "awesome!"
-  not_approved:
+      - run: echo "firsd"
+  second:
+    needs: [first]
     runs-on: ubuntu-latest
-    if: github.event.inputs.approval != 'yes'
     steps:
-      - name: "Failed to approve"
-        run: echo "why don't you like nice things"
+      - uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: We require an action!
+          conclusion: action_required
+          action_url: https://podquotes.io
+          details_url: https://digester.app
+  third:
+    needs: [second]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "third"
