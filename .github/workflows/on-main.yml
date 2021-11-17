@@ -8,15 +8,8 @@ on:
         required: true
 
 jobs:
-  once_approved:
+  test:
     runs-on: ubuntu-latest
-    if: github.event.inputs.approval == 'yes'
+    environment: production
     steps:
-      - name: "After Approval"
-        run: echo "awesome!"
-  not_approved:
-    runs-on: ubuntu-latest
-    if: github.event.inputs.approval != 'yes'
-    steps:
-      - name: "Failed to approve"
-        run: echo "why don't you like nice things"
+      - run: echo 'hello'
