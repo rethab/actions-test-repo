@@ -7,4 +7,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$GITHUB_ENV"
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - run: python write-env.py
+      - run: echo ${{ env.MY_VAR }}
