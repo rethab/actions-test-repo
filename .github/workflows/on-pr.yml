@@ -9,3 +9,12 @@ jobs:
     steps:
       - name: "Simple step on the PR"
         run: echo "I run on the PR"
+      - name: Create tag
+        uses: actions/github-script@v3
+        with:
+          script: |
+            console.log(await github.git.getRef({
+              owner: context.repo.owner,
+              ref: "refs/tags/v1.0.0",
+              repo: context.repo.repo,
+            }));
