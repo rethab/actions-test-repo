@@ -9,3 +9,13 @@ jobs:
     steps:
       - name: "Simple step on the PR"
         run: echo "I run on the PR"
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+            console.log(github.rest);
+            const pulls = github.rest.pulls.list({
+              owner: context.repo.owner,
+              head: 'feat/test-pr',
+              repo: context.repo.repo,
+            });
