@@ -14,7 +14,7 @@ jobs:
         with:
           script: |
             console.log(github.rest);
-            const pulls = github.rest.pulls({
+            const pulls = github.rest.pulls.list({
               owner: context.repo.owner,
               head: 'feat/test-pr',
               repo: context.repo.repo,
