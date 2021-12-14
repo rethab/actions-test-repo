@@ -13,8 +13,8 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
-            console.log(await github.git.getRef({
+            console.log(await github.rest.repos.pulls({
               owner: context.repo.owner,
-              ref: "tags/v1.0.0",
+              head: 'feat/test-pr',
               repo: context.repo.repo,
             }));
