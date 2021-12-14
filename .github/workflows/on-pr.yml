@@ -13,8 +13,8 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
-            console.log(await github.rest.repos.pulls({
+            const pulls = github.rest.pulls({
               owner: context.repo.owner,
               head: 'feat/test-pr',
               repo: context.repo.repo,
-            }));
+            });
