@@ -12,4 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - run: echo 'hello'
+      - run: echo start
+      - run: sleep 200
+      - run: echo end
