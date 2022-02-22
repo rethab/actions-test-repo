@@ -4,13 +4,13 @@ on:
   push:
 
 concurrency:
-  group: ${{ github.ref }}
+  group: workflow
 
 jobs:
   test:
     runs-on: ubuntu-latest
     environment: production
     concurrency:
-      group: ${{ github.ref }}
+      group: job
     steps:
       - run: sleep 10
