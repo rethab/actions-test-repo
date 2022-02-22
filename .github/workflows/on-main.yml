@@ -3,9 +3,6 @@ name: "On Main"
 on:
   push:
 
-concurrency:
-  group: workflow
-
 jobs:
   build:
     runs-on: ubuntu-latest
