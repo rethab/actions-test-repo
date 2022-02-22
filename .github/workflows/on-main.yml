@@ -7,10 +7,10 @@ concurrency:
   group: workflow
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-    environment: production
-    concurrency:
-      group: job
     steps:
-      - run: sleep 10
+      - run: echo 10
+  deployment:
+    needs: build
+    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main

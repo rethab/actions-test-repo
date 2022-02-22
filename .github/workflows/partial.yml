@@ -1,0 +1,16 @@
+on:
+  workflow_call:
+
+concurrency:
+  group: compliance
+
+jobs:
+  compliance:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 10
+  production:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - run: sleep 10
