@@ -10,5 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     environment: production
+    concurrency:
+      group: ${{ github.ref }}
     steps:
       - run: sleep 10
