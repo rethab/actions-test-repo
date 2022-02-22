@@ -8,10 +8,20 @@ on:
         required: true
 
 jobs:
+  build:
+    runs-on: ubuntu-lastest
+    steps:
+      - run: |
+          echo "stderr" >&2
+          echo "stdout"
+          echo "stderr" >&2
+          echo "stdout"
+
   test:
     runs-on: ubuntu-latest
     environment: production
     steps:
+
       - run: echo start
       - run: sleep 200
       - run: echo end
