@@ -1,17 +1,17 @@
 on:
   workflow_call:
-
-concurrency:
-  group: compliance
+    inputs:
+      greeting:
+        default: "Hi"
+        description: "The greeting to use"
+        required: false
+        type: string
 
 jobs:
-  compliance:
+  greet:
     runs-on: ubuntu-latest
     steps:
-      - run: sleep 10
-  production:
-    runs-on: ubuntu-latest
-    environment: production
-    needs: compliance
-    steps:
-      - run: sleep 10
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          greeting: ${{ inputs.greeting }}

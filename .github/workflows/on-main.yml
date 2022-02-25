@@ -4,10 +4,6 @@ on:
   push:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 10
-  deployment:
+  greet:
     needs: build
     uses: rethab/actions-test-repo/.github/workflows/partial.yml@main

@@ -1,0 +1,14 @@
+name: Test
+description: Test Action
+
+inputs:
+  greeting:
+    required: false
+    description: 'Greeting to use.'
+    default: 'Hello'
+
+runs:
+  using: 'composite'
+  steps:
+    - run: echo ${{ inputs.greeting }} Earthling
+      shell: bash
