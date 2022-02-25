@@ -5,5 +5,4 @@ on:
 
 jobs:
   greet:
-    needs: build
     uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
