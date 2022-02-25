@@ -2,7 +2,6 @@ on:
   workflow_call:
     inputs:
       greeting:
-        default: "Hi"
         description: "The greeting to use"
         required: false
         type: string
