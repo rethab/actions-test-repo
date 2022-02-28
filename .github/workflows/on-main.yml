@@ -4,5 +4,7 @@ on:
   push:
 
 jobs:
-  greet:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo $GITHUB_STEP_SUMMARY
