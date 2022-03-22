@@ -6,9 +6,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: production
     steps:
-      - run: |
-          for (( i=0; i<1; i++ )); do
-            echo ${{github.event.commits}} | jq ".[$i]"
-          done
+      - run: echo ${{github.event.commits}} | jq ".[0]"
+  test2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo '${{ toJSON(github.event.commits) }}' | jq ".[0]"
