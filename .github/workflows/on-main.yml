@@ -7,8 +7,4 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{github.event.commits}} | jq ".[0]"
-  test2:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo '${{ toJSON(github.event.commits) }}' | jq ".[0]"
+      - run: echo '${{ toJSON(github.event.commits) }}' | jq ".[0].author"
