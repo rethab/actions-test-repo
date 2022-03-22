@@ -8,3 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo '${{ toJSON(github.event.commits) }}' | jq ".[0].author"
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            console.log(github.event)
