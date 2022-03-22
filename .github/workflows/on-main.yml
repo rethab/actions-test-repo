@@ -8,8 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - name: Dump GitHub context
-        id: github_context_step
-        run: echo '${{ toJSON(github) }}'
-      - name: Dump job context
-        run: echo '${{ toJSON(job) }}'
+      - run: |
+          for (( i=0; i<1; i++ )); do
+            echo ${{github.event.commits}} | jq ".[$i]"
+          done
