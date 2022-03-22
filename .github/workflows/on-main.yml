@@ -6,5 +6,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: production
     steps:
-      - run: echo $GITHUB_STEP_SUMMARY
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'
+      - name: Dump job context
+        run: echo '${{ toJSON(job) }}'
