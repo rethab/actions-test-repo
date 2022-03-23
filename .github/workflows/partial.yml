@@ -9,8 +9,8 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ inputs.greeting }}
+      cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v2
-      - uses: ./
-        with:
-          greeting: ${{ inputs.greeting }}
+      - run: echo ${{ inputs.greeting }}
