@@ -13,4 +13,6 @@ jobs:
       group: ${{ inputs.greeting }}
       cancel-in-progress: true
     steps:
-      - run: echo ${{ inputs.greeting }}
+      - run: echo before ${{ inputs.greeting }}
+      - run: sleep 10
+      - run: echo after ${{ inputs.greeting }}
