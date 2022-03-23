@@ -7,4 +7,4 @@ jobs:
   test:
     uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
     with:
-      greeting: bar
+      greeting: baz
