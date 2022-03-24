@@ -5,6 +5,10 @@ on:
 
 jobs:
   test:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
-    with:
-      greeting: baz
+    if: ${{ github.event_name != 'push' }} || ${{ github.ref != 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event_name }}
+      - run: echo ${{ github.event_name != 'push }}
+      - run: echo ${{ github.ref }}
+      - run: echo ${{ github.ref != 'refs/heads/main' }}
