@@ -9,6 +9,7 @@ jobs:
     outputs:
       matrix: ${{ steps.dirs.outputs.directories }}
     steps:
+      - uses: actions/checkout@v2
       - id: dirs
         run: echo "::set-output name=directories::$(ls tests/)"
 
