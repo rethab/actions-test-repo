@@ -7,11 +7,11 @@ jobs:
   collect_dirs:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.dirs.outputs.directories }}
+      dirs: ${{ steps.dirs.outputs.dirs }}
     steps:
       - uses: actions/checkout@v2
       - id: dirs
-        run: echo "::set-output name=directories::$(ls tests/)"
+        run: echo "::set-output name=dirs::$(ls tests/)"
 
   run_tests:
     needs: collect_dirs
