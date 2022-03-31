@@ -7,7 +7,7 @@ jobs:
   show_event:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.event.type }}
+      - run: echo ${{ github.event.name }}
   collect_dirs:
     runs-on: ubuntu-latest
     outputs:
