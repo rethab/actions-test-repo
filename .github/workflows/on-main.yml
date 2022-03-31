@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: dirs
-        run: echo "::set-output name=dirs::$(find tests -maxdepth 1 -type d | jq --raw-input --slurp --compact-output 'split("\n")[:-1]')"
+        run: echo "::set-output name=dirs::$(ls -d tests/*/ | jq --raw-input --slurp --compact-output 'split("\n")[:-1]')"
 
   run_tests:
     needs: collect_dirs
