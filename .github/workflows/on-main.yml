@@ -4,11 +4,19 @@ on:
   push:
 
 jobs:
-  test:
-    if: ${{ github.event_name != 'pus' || github.ref != 'refs/heads/main' }}
+  collect_dirs:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.dirs.outputs.directories }}
     steps:
-      - run: echo ${{ github.event_name }}
-      - run: echo ${{ github.event_name != 'push' }}
-      - run: echo ${{ github.ref }}
-      - run: echo ${{ github.ref != 'refs/heads/main' }}
+      - id: dirs
+        run: echo "::set-output name=directories::$(ls tests/)"
+
+  run_tests:
+    needs: collect_dirs
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dir: ${{ fromJson(needs.collect_dirs.outputs.dirs) }}
+    steps:
+      - run: echo ${{ matrix.dir }}
