@@ -2,7 +2,7 @@ on:
   workflow_call:
 
 concurrency:
-  group: partial
+  group: partial-${{ github.ref }}
 
 jobs:
   greet:
