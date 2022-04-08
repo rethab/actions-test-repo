@@ -1,18 +1,13 @@
 on:
   workflow_call:
-    inputs:
-      greeting:
-        description: "The greeting to use"
-        required: false
-        type: string
+
+concurrency:
+  group: partial
 
 jobs:
   greet:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ inputs.greeting }}
-      cancel-in-progress: true
+    environment: confirm
     steps:
-      - run: echo before ${{ inputs.greeting }}
-      - run: sleep 10
-      - run: echo after ${{ inputs.greeting }}
+      - run: echo hello

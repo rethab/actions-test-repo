@@ -1,0 +1,8 @@
+name: "On Main"
+
+on:
+  push:
+
+jobs:
+  call_partial:
+    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
