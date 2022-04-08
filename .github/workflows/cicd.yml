@@ -4,5 +4,12 @@ on:
   push:
 
 jobs:
-  call_partial:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: openjdk:17.0.2-jdk
+    steps:
+      - uses: actions/checkout@v3
+      - run: java --version
+      - run: uname -a
+      - run: ls -la
