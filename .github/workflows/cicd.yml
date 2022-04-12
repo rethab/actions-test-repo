@@ -14,13 +14,15 @@ jobs:
       - name: Find Paths
         id: find_path
         run: |
-          echo "::set-output name=paths::$(cat document.txt)"
+          all_paths=$(cat document.txt)
+          echo "::set-output name=paths::$(echo ${all_paths})"
 
       - name: List
         id: list_path
         run: |
           var_paths=${{ steps.find_path.outputs.paths }}
           echo $var_paths
+          echo nothing
           
           for part in ${var_paths[@]}; do 
              echo $part
