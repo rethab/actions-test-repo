@@ -1,15 +1,27 @@
 name: "On Main"
 
 on:
-  push:
+  push
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: openjdk:17.0.2-jdk
+
     steps:
-      - uses: actions/checkout@v3
-      - run: java --version
-      - run: uname -a
-      - run: ls -la
+      - name: Code Checkout
+        uses: actions/checkout@v3
+
+      - name: Find Paths
+        id: find_path
+        run: |
+          echo "::set-output name=paths::$(cat document.txt)"
+
+      - name: List
+        id: list_path
+        run: |
+          var_paths=${{ steps.find_path.outputs.paths }}
+          echo $var_paths
+          
+          for part in ${var_paths[@]}; do 
+             echo $part
+          done

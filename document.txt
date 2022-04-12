@@ -1,0 +1,3 @@
+/home/ubuntu
+/home/ubuntu/docs
+/home/ariel/code
