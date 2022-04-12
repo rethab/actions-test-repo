@@ -20,7 +20,7 @@ jobs:
       - name: List
         id: list_path
         run: |
-          var_paths=${{ steps.find_path.outputs.paths }}
+          var_paths="${{ steps.find_path.outputs.paths }}"
           echo $var_paths
           echo nothing
           
