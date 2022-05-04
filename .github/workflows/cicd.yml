@@ -6,4 +6,6 @@ on:
 jobs:
   build:
     uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
-    secrets: inherit
+    secrets:
+      my-secret: ${{ secrets.TEST_SECRET }}
+
