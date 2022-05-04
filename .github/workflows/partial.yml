@@ -13,4 +13,5 @@ jobs:
     runs-on: ubuntu-latest
     environment: confirm
     steps:
-      - run: echo hello
+      - run: echo ${{ secrets.TEST_SECRET }}
+      - run: echo ${{ secrets.my-secret }}
