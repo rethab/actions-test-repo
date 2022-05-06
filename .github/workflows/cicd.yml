@@ -4,6 +4,12 @@ on:
   push
 
 jobs:
+  foo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: git log -n 1
+
   build:
     uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
     secrets:
