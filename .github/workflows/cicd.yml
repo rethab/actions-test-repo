@@ -4,14 +4,13 @@ on:
   push
 
 jobs:
-  foo:
+  be:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: git log -n 1
-
-  build:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
-    secrets:
-      my-secret: ${{ secrets.TEST_SECRET }}
-
+      - run: mv -rf backend/ .
+  fe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: mv -rf frontend/ .
