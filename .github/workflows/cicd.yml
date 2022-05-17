@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: mv -f backend/ .
+      - run: mv -f backend/* .
   fe:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: mv -f frontend/ .
+      - run: mv -f frontend/* .
