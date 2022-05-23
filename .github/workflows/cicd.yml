@@ -1,18 +1,10 @@
 name: "On Main"
 
-on:
-  push
+on: workflow_dispatch
 
 jobs:
-  be:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: mv -f backend/* .
-      - run: ls -R
-  fe:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: mv -f frontend/* .
-      - run: ls -R
+      - run: echo ${{ toJSON(github) }}
+
