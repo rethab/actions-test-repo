@@ -1,6 +1,6 @@
 name: "On Main"
 
-on: workflow_dispatch
+on: push
 
 jobs:
   test:
@@ -11,6 +11,6 @@ jobs:
       - run: echo nada
         id: skip2
       - run: echo I work
-        if: steps.skip.outputs.skip-me != true
+        if: steps.skip.outputs.skip-me != 'true'
       - run: echo I work2
-        if: steps.skip2.outputs.skip-me != true
+        if: steps.skip2.outputs.skip-me != 'true'
