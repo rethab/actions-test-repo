@@ -8,7 +8,7 @@ jobs:
     steps:
       - run: echo '::set-output name=skip-me::true'
         id: skip
-      - run: echo '::set-output name=run-me::false'
+      - run: echo '::set-output name=def::false'
         id: run
       - run: echo Skip Me
         if: '!steps.skip.outputs.abc && !steps.skip.outputs.def'
