@@ -4,7 +4,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # ratchet:actions/checkout@v3
-      - uses: 'docker://ghcr.io/sethvargo/ratchet@sha256:35c4b5f020000ee9c77a4af7cbe04f1d3e88718e533e6cb949146d4dc2c89220' # ratchet:docker://ghcr.io/sethvargo/ratchet:0.2.1
+      - uses: actions/checkout@v3 # ratchet:actions/checkout@v3
+      - uses: 'docker://ghcr.io/sethvargo/ratchet@0.2.1' # ratchet:docker://ghcr.io/sethvargo/ratchet:0.2.1
         with:
           args: pin .github/workflows/cicd.yml
