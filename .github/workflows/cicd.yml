@@ -6,7 +6,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '::set-output name=abc::false'
+      - run: |
+          echo '::set-output name=abc::false'
+          echo '::set-output name=def::false'
         id: skip
       - run: echo Skip Me
         if: 'steps.skip.outputs.abc != true && !steps.skip.outputs.def'
