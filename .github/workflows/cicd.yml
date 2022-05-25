@@ -4,7 +4,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3 # ratchet:actions/checkout@v3
-      - uses: 'docker://ghcr.io/sethvargo/ratchet@0.2.1' # ratchet:docker://ghcr.io/sethvargo/ratchet:0.2.1
+      - uses: actions/checkout@v3
+      - uses: 'docker://ghcr.io/sethvargo/ratchet@0.2.1'
         with:
           args: pin .github/workflows/cicd.yml
