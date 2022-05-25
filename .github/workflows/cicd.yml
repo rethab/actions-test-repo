@@ -6,6 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: chmod +w .github/workflows
+      - run: ls -lah .github/workflows
       - uses: 'docker://ghcr.io/sethvargo/ratchet:0.2.1'
         with:
           args: pin .github/workflows/cicd.yml
