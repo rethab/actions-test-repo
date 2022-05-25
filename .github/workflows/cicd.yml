@@ -1,11 +1,14 @@
 name: "On Main"
 
-on:
-  push:
-  workflow_dispatch:
+on: push
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{ toJSON(github) }}'
+      - run: echo '::set-output name=skip-me::true'
+        id: skip
+      - run: echo '::set-output name=run-me::false'
+        id: run
+      - run: echo Skip Me
+        if: '!steps.skip.outputs.abc && !steps.skip.outputs.def'
