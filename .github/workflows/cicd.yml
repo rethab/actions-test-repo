@@ -5,8 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: ls -lah .github
-      - run: ls -lah .github/workflows
+      - chmod: +w .github/workflows
       - uses: 'docker://ghcr.io/sethvargo/ratchet:0.2.1'
         with:
           args: pin .github/workflows/cicd.yml
