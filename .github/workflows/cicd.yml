@@ -11,4 +11,4 @@ jobs:
           echo '::set-output name=def::false'
         id: skip
       - run: echo Skip Me
-        if: 'steps.skip.outputs.abc != true && !steps.skip.outputs.def'
+        if: 'steps.skip.outputs.abc != true && steps.skip.outputs.def != true'
