@@ -6,11 +6,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '::set-output name=skip-me::true'
-        id: skip
-      - run: echo '::set-output name=run-me::false'
-        id: run
-      - run: echo Skip Me
-        if: '!steps.skip.outputs.skip-me'
-      - run: echo Run Me
-        if: '!steps.skip.outputs.run-me'
+      - uses: actions/checkout@v3
+      - uses: 'docker://ghcr.io/sethvargo/ratchet:0.2.1'
+        with:
+          args: ['check', '.github/workflows/cicd.yml']
