@@ -5,6 +5,8 @@ on: push
 jobs:
   partial:
     uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
+    with:
+      enabled: true
   test:
     runs-on: ubuntu-latest
     steps:
