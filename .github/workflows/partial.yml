@@ -1,17 +1,15 @@
 on:
   workflow_call:
-    secrets:
-      my-secret:
+    inputs:
+      enabled:
+        default: true
+        description: "Enable or disable the workflow"
         required: false
-
-concurrency:
-  group: partial-${{ github.ref }}
+        type: boolean
 
 jobs:
   greet:
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment: confirm
     steps:
-      - run: echo ${{ secrets.TEST_SECRET }}
-      - run: echo ${{ secrets.my-secret }}
+      - run: echo I should run
+        if: '!inputs.enabled'

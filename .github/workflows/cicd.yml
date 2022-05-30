@@ -3,6 +3,8 @@ name: "On Main"
 on: push
 
 jobs:
+  partial:
+    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
   test:
     runs-on: ubuntu-latest
     steps:
