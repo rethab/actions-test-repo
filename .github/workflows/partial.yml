@@ -2,7 +2,7 @@ on:
   workflow_call:
     inputs:
       enabled:
-        default: false
+        default: true
         description: "Enable or disable the workflow"
         required: false
         type: boolean
@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo I should run
-        if: '!inputs.enabled'
+        if: "inputs.enabled && steps.skip.outputs.def != 'true'"
