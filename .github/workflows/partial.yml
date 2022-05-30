@@ -2,7 +2,7 @@ on:
   workflow_call:
     inputs:
       enabled:
-        default: true
+        default: false
         description: "Enable or disable the workflow"
         required: false
         type: boolean
