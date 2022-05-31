@@ -5,9 +5,11 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      CONTAINS_PYTHON: contains(toJSON(github.event.commits.*.message), '[python]')
     steps:
       - run: |
-          if [[ "${{ contains(toJSON(github.event.commits.*.message), '[python]') }}" == "true" ]]; then
+          if [[ "${{ env.CONTAINS_PYTHON }}" == "true" ]]; then
             echo 'PYTHON_SET=yes' >> "$GITHUB_ENV"
           else
             echo 'PYTHON_SET=no' >> "$GITHUB_ENV"
