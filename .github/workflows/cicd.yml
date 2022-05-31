@@ -3,21 +3,14 @@ name: "On Main"
 on: push
 
 jobs:
-  partial:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
-    with:
-      enabled: true
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '::set-output name=abc::false'
-        id: skip
+      - run: |
+          if [[ ${{ contains(toJSON(github.event.commits.*.message), '[python]') }} ]]; then
+            echo 'PYTHON_SET=yes' >> $GITHUB_ENV
+          else
+            echo 'PYTHON_SET=no' >> $GITHUB_ENV
+          fi
 
-      - run: echo I should run
-        if: steps.skip.outputs.abc != 'false' && steps.skip.outputs.def != 'true'
-
-      - run: echo I should run
-        if: '!steps.skip.outputs.def'
-
-      - run: echo I should run
-        if: '!steps.skip.outputs.abc && !steps.skip.outputs.def'
+      - run: echo ${{ env.PYTHON_SET }}
