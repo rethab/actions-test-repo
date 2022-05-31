@@ -8,11 +8,4 @@ jobs:
     env:
       CONTAINS_PYTHON: ${{ contains(toJSON(github.event.commits.*.message), '[python]') }}
     steps:
-      - run: |
-          if [[ "${{ env.CONTAINS_PYTHON }}" == "true" ]]; then
-            echo 'PYTHON_SET=yes' >> "$GITHUB_ENV"
-          else
-            echo 'PYTHON_SET=no' >> "$GITHUB_ENV"
-          fi
-
-      - run: echo ${{ env.PYTHON_SET }}
+      - run: echo ${{ env.CONTAINS_PYTHON }}
