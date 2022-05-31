@@ -8,9 +8,9 @@ jobs:
     steps:
       - run: |
           if [[ "${{ contains(toJSON(github.event.commits.*.message), '[python]') }}" == "true" ]]; then
-            echo 'PYTHON_SET=yes' >> $GITHUB_ENV
+            echo 'PYTHON_SET=yes' >> "$GITHUB_ENV"
           else
-            echo 'PYTHON_SET=no' >> $GITHUB_ENV
+            echo 'PYTHON_SET=no' >> "$GITHUB_ENV"
           fi
 
       - run: echo ${{ env.PYTHON_SET }}
