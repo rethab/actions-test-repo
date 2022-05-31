@@ -8,4 +8,4 @@ jobs:
     env:
       CONTAINS_PYTHON: ${{ contains(toJSON(github.event.commits.*.message), '[python]') }}
     steps:
-      - run: echo ${{ env.CONTAINS_PYTHON }}
+      - run: python -c 'import os; print(os.getenv("CONTAINS_PYTHON"))'
