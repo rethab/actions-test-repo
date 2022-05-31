@@ -1,11 +1,15 @@
 name: "On Main"
 
-on: push
+on:
+  pull_request:
+    types:
+      - closed
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      CONTAINS_PYTHON: ${{ contains(toJSON(github.event.commits.*.message), '[python]') }}
     steps:
-      - run: python -c 'import os; print(os.getenv("CONTAINS_PYTHON"))'
+      - run: echo "${{ toJSON(github.event) }}"
+        continue-on-error: true
+      - run: echo "${{ fromJSON(github.event) }}"
+        continue-on-error: true
