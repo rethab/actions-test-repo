@@ -6,7 +6,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      CONTAINS_PYTHON: contains(toJSON(github.event.commits.*.message), '[python]')
+      CONTAINS_PYTHON: ${{ contains(toJSON(github.event.commits.*.message), '[python]') }}
     steps:
       - run: |
           if [[ "${{ env.CONTAINS_PYTHON }}" == "true" ]]; then
