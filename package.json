@@ -1,0 +1,25 @@
+{
+  "name": "actions-test-repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rethab/actions-test-repo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rethab/actions-test-repo/issues"
+  },
+  "homepage": "https://github.com/rethab/actions-test-repo#readme",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}

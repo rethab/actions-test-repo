@@ -2,3 +2,4 @@
 *.iml
 .env
 stuff/
+node_modules

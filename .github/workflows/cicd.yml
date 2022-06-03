@@ -9,7 +9,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ toJSON(github.event) }}"
-        continue-on-error: true
-      - run: echo "${{ fromJSON(github.event) }}"
-        continue-on-error: true
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - run: npm test -- test.js --reporters=github-actions --reporters=default
