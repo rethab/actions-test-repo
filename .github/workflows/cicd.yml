@@ -1,9 +1,6 @@
 name: "On Main"
 
-on:
-  pull_request:
-    types:
-      - closed
+on: push
 
 jobs:
   test:
