@@ -1,6 +1,6 @@
 name: "On Main"
 
-on: push
+on: issue_comment
 
 jobs:
   test:
