@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/rethab/actions-test-repo#readme",
   "devDependencies": {
-    "jest": "^28.1.0"
+    "jest": "^28.1.1"
   }
 }
