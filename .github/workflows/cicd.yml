@@ -1,6 +1,21 @@
 name: "On Main"
 
-on: push
+on:
+  workflow_dispatch:
+    inputs:
+      hubAddressGroupObject:
+        type: choice
+        description: 'Random description'
+        required: true
+        default: 'AZURE-EUW-XXXXX'
+        options:
+          - AZURE-EUW-XXXXX
+          - AZURE-FRC-XXXXX
+          - AZURE-USE-XXXXX
+          - AZURE-FRC-XXXXX
+          - AZURE-USE-XXXXX
+          - AZURE-FRC-XXXXX
+          - AZURE-USE-XXXXX
 
 jobs:
   test:
