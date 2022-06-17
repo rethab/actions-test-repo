@@ -11,5 +11,5 @@ jobs:
     steps:
       - run: echo '${{ toJSON(github.event) }}'
       - run: echo hello, world
-        if: contains(toJSON(github.event.commits.*.message), '[deploy]')
+        if: github.event.action == 'edited' && contains(github.event.pull_request.title, '[deploy]')
 
