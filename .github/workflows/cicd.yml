@@ -1,28 +1,15 @@
 name: "On Main"
 
 on:
-  workflow_dispatch:
-    inputs:
-      hubAddressGroupObject:
-        type: choice
-        description: 'Random description'
-        required: true
-        default: 'AZURE-EUW-XXXXX'
-        options:
-          - AZURE-EUW-XXXXX
-          - AZURE-FRC-XXXXX
-          - AZURE-USE-XXXXX
-          - AZURE-FRC-XXXXX
-          - AZURE-USE-XXXXX
-          - AZURE-FRC-XXXXX
-          - AZURE-USE-XXXXX
+  pull_request:
+    types: [synchronize, opened, reopened, edited]
+
 
 jobs:
-  test:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
-  two:
-    needs: test
+  one:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello
+      - run: echo '${{ toJSON(github.event) }}'
+      - run: echo hello, world
+        if: github.event.action == 'edited' && contains(github.event.pull_request.title, '[deploy]')
 
