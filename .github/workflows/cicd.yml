@@ -8,7 +8,7 @@ jobs:
   one:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ toJSON(github.event) }}
+      - run: echo '${{ toJSON(github.event) }}'
       - run: echo hello, world
         if: contains(toJSON(github.event.commits.*.message), '[deploy]')
 
