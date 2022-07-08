@@ -1,28 +1,11 @@
 name: "On Main"
 
 on:
-  workflow_dispatch:
-    inputs:
-      hubAddressGroupObject:
-        type: choice
-        description: 'Random description'
-        required: true
-        default: 'AZURE-EUW-XXXXX'
-        options:
-          - AZURE-EUW-XXXXX
-          - AZURE-FRC-XXXXX
-          - AZURE-USE-XXXXX
-          - AZURE-FRC-XXXXX
-          - AZURE-USE-XXXXX
-          - AZURE-FRC-XXXXX
-          - AZURE-USE-XXXXX
+  pull_request:
+  push:
 
 jobs:
   test:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
-  two:
-    needs: test
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello
-
+      - run: echo $GITHUB_SHA
