@@ -10,5 +10,5 @@ jobs:
     environment: production
     steps:
       - run: echo $GITHUB_SHA
-      - run: echo '${{ fromJSON(github.event) }}'
+      - run: echo '${{ toJSON(github.event) }}'
       - run: sleep 10
