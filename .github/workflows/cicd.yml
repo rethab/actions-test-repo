@@ -7,5 +7,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    container:
+      image: alpine
     steps:
-      - run: echo $GITHUB_SHA
+      - uses: actions/checkout@v3
+      - run: echo hello
