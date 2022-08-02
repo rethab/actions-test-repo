@@ -1,0 +1,10 @@
+name: Wait for 24h
+
+on: pull_request
+
+jobs:
+  wait:
+    runs-on: ubuntu-latest
+    environment: pr-sleeper
+    steps:
+      - run: echo done
