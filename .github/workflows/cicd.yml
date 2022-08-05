@@ -9,6 +9,7 @@ jobs:
     environment: test
     runs-on: ubuntu-latest
     steps:
+      - run: echo '${{ secrets.github_token }}'
       - run: echo '${{ toJSON(github) }}'
       - run: echo '${{ toJSON(job) }}'
 
