@@ -2,14 +2,13 @@ name: "On Main"
 
 on:
   pull_request:
-  push:
+    types: [labeled, opened, synchronize]
+    branches: 'test/**'
+
 
 jobs:
   test:
-    environment: test
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{ secrets.github_token }}'
-      - run: echo '${{ toJSON(github) }}'
-      - run: echo '${{ toJSON(job) }}'
+      - run: echo hello
 
