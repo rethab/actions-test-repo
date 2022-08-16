@@ -7,5 +7,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{ github.event.payload.verification }}'
+      - run: echo '${{ fromJSON(github.event.payload) }}'
+      - run: echo '${{ toJSON(github.event.payload) }}'
 
