@@ -7,5 +7,5 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{ github.event.payload.commit.verification }}'
+      - run: echo '${{ github.event.payload.verification }}'
 
