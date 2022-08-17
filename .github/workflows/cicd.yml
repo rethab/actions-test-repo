@@ -8,4 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo '${{ toJSON(github.event) }}'
+      - run: echo i am a tag
+        if: startsWith(github.event.ref, 'refs/tags/')
 
