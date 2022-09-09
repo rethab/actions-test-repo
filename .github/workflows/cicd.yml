@@ -9,10 +9,6 @@ env:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo ${{ env.NAME }}
-      - uses: actions/checkout@v3
-        with:
-          repository: ${{ env.NAME }}
-
+    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
+    with:
+      name: ${{ env.NAME }}
