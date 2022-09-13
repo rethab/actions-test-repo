@@ -6,8 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo first job
+
   secondJob:
     runs-on: ubuntu-latest
-    needs: firstJob
+    needs: asdf
     steps:
       - run: echo second
