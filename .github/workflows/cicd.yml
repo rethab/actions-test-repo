@@ -4,7 +4,5 @@ on:
 jobs:
   firstJob:
     runs-on: ubuntu-latest
-    container: debian
     steps:
-
-      - run: cat /etc/issue
+      - run: echo ${{ secrets.MY_CONNECTION_STRING }}
