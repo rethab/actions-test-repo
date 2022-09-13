@@ -1,7 +1,12 @@
-on: push
+on:
+  push:
 
 jobs:
   firstJob:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello
+      - run: echo first job
+  secondJob:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo second
