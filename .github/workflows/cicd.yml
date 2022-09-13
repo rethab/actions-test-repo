@@ -3,7 +3,8 @@ on: push
 jobs:
   first:
     runs-on: ubuntu-latest
-    container:
-      image: debian
+    services:
+      debian:
+        image: debian
     steps:
       - run: cat /etc/issue
