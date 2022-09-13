@@ -1,10 +1,13 @@
 name: Our new Action
 description: Our new Description
 
+inputs:
+  name:
+    required: true
+    description: the name
+
 runs:
   using: composite
   steps:
-    - run: echo hello
-      shell: bash
-    - run: echo bye
+    - run: echo ${{ inputs.name }}
       shell: bash
