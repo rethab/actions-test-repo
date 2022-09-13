@@ -5,4 +5,4 @@ jobs:
   firstJob:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ secrets.MY_CONNECTION_STRING }}
+      - run: echo ${{ secrets.MY_CONNECTION_STRING }} | awk '{print substr($0, 2)}'
