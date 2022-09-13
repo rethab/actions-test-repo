@@ -4,11 +4,7 @@ on:
 jobs:
   firstJob:
     runs-on: ubuntu-latest
+    container: debian
     steps:
-      - run: echo first job
 
-  secondJob:
-    runs-on: ubuntu-latest
-    needs: asdf
-    steps:
-      - run: echo second
+      - run: cat /etc/issue
