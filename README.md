@@ -5,6 +5,7 @@
 - triggers
   - [events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
   - multiple triggers
+  - workflow_dispatch
 
 - jobs
   - steps
@@ -15,6 +16,7 @@
   - actions/setup-xxx
 
 - docker
+  - services
 
 - secrets
 

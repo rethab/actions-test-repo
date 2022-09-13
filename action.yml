@@ -1,14 +1,10 @@
-name: Test
-description: Test Action
-
-inputs:
-  greeting:
-    required: false
-    description: 'Greeting to use.'
-    default: 'Hello'
+name: Our new Action
+description: Our new Description
 
 runs:
-  using: 'composite'
+  using: composite
   steps:
-    - run: echo ${{ inputs.greeting }} Earthling
+    - run: echo hello
+      shell: bash
+    - run: echo bye
       shell: bash
