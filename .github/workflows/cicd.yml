@@ -6,4 +6,4 @@ jobs:
     container:
       image: debian
     steps:
-      - run: echo /etc/issue
+      - run: cat /etc/issue
