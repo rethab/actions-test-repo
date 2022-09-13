@@ -1,14 +1,9 @@
-name: "On Main"
-
-on:
-  push:
-  workflow_dispatch:
-
-env:
-  NAME: hans
+on: push
 
 jobs:
-  test:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
-    with:
-      name: ${{ env.NAME }}
+  first:
+    runs-on: ubuntu-latest
+    container:
+      image: debian
+    steps:
+      - run: echo /etc/issue
