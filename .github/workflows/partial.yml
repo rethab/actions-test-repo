@@ -6,22 +6,10 @@ on:
       environment:
         type: string
         required: false
+        default: ${{ github.repository == 'actions-test-repo' }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-  static-analysis:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: echo ${{ secrets.MY_SECRET }}
-
-  dev-deployment:
-    needs: static-analysis
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo deploying to ${{ inputs.environment }}
+      - run: echo ${{ inputs.environment }}
