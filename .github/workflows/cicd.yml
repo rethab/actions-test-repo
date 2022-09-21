@@ -5,5 +5,3 @@ jobs:
   ci:
     uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
     secrets: inherit
-    with:
-      environment: dev
