@@ -3,13 +3,18 @@ name: Gradle Build
 on:
   workflow_call:
     inputs:
-      environment:
-        type: string
+      my-input:
+        description: optional input
         required: false
-        default: ${{ github.repository == 'actions-test-repo' }}
+        type: string
 
 jobs:
-  build:
+  greet:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ inputs.environment }}
+      - uses: actions/checkout@v3
+        if: inputs.my-input
+        with:
+            repository: ${{ inputs.my-input }}
+      - uses: actions/checkout@v3
+        if: ! inputs.my-input
