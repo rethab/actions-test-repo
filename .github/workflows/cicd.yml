@@ -1,7 +1,22 @@
-on:
-  push:
+on: push
 
 jobs:
-  ci:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
-    secrets: inherit
+  jobOne:
+    runs-on: ubuntu-latest
+    outputs:
+      foo: ${{ steps.foo.outputs.foo }}
+    steps:
+      - run: echo '::set-output name=foo::value=bar'
+        id: foo
+      
+  jobTwo:
+    needs: jobOne
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello
+        
+  jobThree:
+    needs: [jobOne, jobTwo]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.jobOne.outputs.foo }}
