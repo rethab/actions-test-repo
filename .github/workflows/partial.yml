@@ -17,4 +17,4 @@ jobs:
         with:
             repository: ${{ inputs.my-input }}
       - uses: actions/checkout@v3
-        if: ! inputs.my-input
+        if: inputs.my-input == ''
