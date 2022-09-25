@@ -1,7 +1,7 @@
-on:
-  push:
+on: pull_request
 
 jobs:
-  ci:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
-    secrets: inherit
+  branch:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.ref_name }}
