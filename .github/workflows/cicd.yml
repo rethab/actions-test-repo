@@ -16,7 +16,7 @@ jobs:
       - run: echo hello
         
   jobThree:
-    needs: jobTwo
+    needs: [jobOne, jobTwo]
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ needs.jobOne.outputs.foo }}
