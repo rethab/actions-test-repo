@@ -2,7 +2,6 @@ on: push
 
 jobs:
   jobOne:
-    id: jobOne
     runs-on: ubuntu-latest
     outputs:
       foo: ${{ steps.foo.outputs.foo }}
@@ -11,14 +10,12 @@ jobs:
         id: foo
       
   jobTwo:
-    id: jobTwo
     needs: jobOne
     runs-on: ubuntu-latest
     steps:
       - run: echo hello
         
   jobThree:
-    id: jobThree
     needs: jobTwo
     runs-on: ubuntu-latest
     steps:
