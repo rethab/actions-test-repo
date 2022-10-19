@@ -2,5 +2,7 @@ on:
   push:
 
 jobs:
-  ci:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
+  jobA:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello, world
