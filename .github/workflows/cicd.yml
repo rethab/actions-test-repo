@@ -7,4 +7,5 @@ jobs:
   jobA:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello, world
+      - uses: actions/checkout@v3
+      - run: ls
