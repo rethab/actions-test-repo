@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
     inputs:
-      environment:
+      foo:
         description: The ENV
         type: choice
         options:
@@ -13,4 +13,4 @@ jobs:
   jobA:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ inputs.environment }}
+      - run: echo ${{ inputs.foo }}
