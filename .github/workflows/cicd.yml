@@ -1,8 +1,16 @@
 on:
-  push:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: The ENV
+        type: choice
+        options:
+          - ''
+          - production
+        required: true
 
 jobs:
   jobA:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello, world
+      - run: echo ${{ inputs.environment }}
