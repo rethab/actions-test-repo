@@ -5,4 +5,4 @@ jobs:
   jobA:
     uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
     with:
-      my-input: foo,bar
+      my-input: europe,usa,asia
