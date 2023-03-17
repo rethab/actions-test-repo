@@ -1,16 +1,8 @@
 on:
-  workflow_dispatch:
-    inputs:
-      foo:
-        description: The ENV
-        type: choice
-        options:
-          - ''
-          - production
-        required: false
+  push:
 
 jobs:
   jobA:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo ${{ inputs.foo }}
+    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
+    with:
+      my-input: foo,bar

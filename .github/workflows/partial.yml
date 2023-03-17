@@ -1,20 +1,27 @@
-name: Gradle Build
+name: Multi Input
 
 on:
   workflow_call:
     inputs:
       my-input:
-        description: optional input
-        required: false
+        description: provide multiple values separated by comma
+        required: true
         type: string
 
 jobs:
-  greet:
+  createMatrix:
     runs-on: ubuntu-latest
+    matrix: ${{ steps.create-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v3
-        if: inputs.my-input
-        with:
-            repository: ${{ inputs.my-input }}
-      - uses: actions/checkout@v3
-        if: inputs.my-input == ''
+      - id: create-matrix
+        run: |
+          INPUTS="${{ inputs.my-input }} "
+          echo "matrix={\"inputs\": [\"${INPUTS//,//\",\"}\"]}" >> $GITHUB_OUTPUT
+
+  greet:
+    needs: createMatrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJSON(needs.createMatrix.outputs.matrix) }}
+    steps:
+      - run: echo ${{ matrix.inputs }}
