@@ -11,7 +11,8 @@ on:
 jobs:
   createMatrix:
     runs-on: ubuntu-latest
-    matrix: ${{ steps.create-matrix.outputs.matrix }}
+    outputs:
+      matrix: ${{ steps.create-matrix.outputs.matrix }}
     steps:
       - id: create-matrix
         run: |
