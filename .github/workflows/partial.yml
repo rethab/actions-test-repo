@@ -17,7 +17,8 @@ jobs:
       - id: create-matrix
         run: |
           INPUTS="${{ inputs.my-input }} "
-          echo "matrix={\"inputs\": [\"${INPUTS//,//\",\"}\"]}" >> $GITHUB_OUTPUT
+          MATRIX="{\"inputs\": [\"${INPUTS//,//\",\"}\"]}"
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
 
   greet:
     needs: createMatrix
