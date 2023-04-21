@@ -3,6 +3,6 @@ on:
 
 jobs:
   jobA:
-    uses: rethab/actions-test-repo/.github/workflows/partial.yml@main
-    with:
-      my-input: europe,usa,asia
+    environment: production
+    steps:
+      - run: echo hello, world
