@@ -4,5 +4,6 @@ on:
 jobs:
   jobA:
     environment: production
+    runs-on: ubuntu-latest
     steps:
       - run: echo hello, world
