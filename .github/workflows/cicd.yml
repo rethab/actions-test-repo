@@ -8,7 +8,7 @@ on:
 
 jobs:
   dump_contexts_to_log:
-    environment: myenv
+    environment: production
     runs-on: ubuntu-latest
     strategy:
       matrix:
