@@ -1,11 +1,14 @@
 on:
   push:
 
+vars:
+  CLUSTER: '[europe]'
+
 jobs:
   dump_contexts_to_log:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cluster: [europe]
+        cluster: ${{ fromJSON(vars.CLUSTER) }}
     steps:
       - run: echo ${{ matrix.cluster }}
