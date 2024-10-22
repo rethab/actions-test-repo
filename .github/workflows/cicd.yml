@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cluster: europe
+        cluster: [europe]
     steps:
       - run: echo ${{ matrix.cluster }}
