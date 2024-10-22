@@ -4,12 +4,13 @@ on:
     inputs:
       cluster:
         type: string
+        default: europe
 
 jobs:
   dump_contexts_to_log:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cluster: ${{ fromJSON(inputs.cluster) }}
+        cluster: ${{ fromJson(inputs.cluster) }}
     steps:
       - run: echo ${{ matrix.cluster }}
