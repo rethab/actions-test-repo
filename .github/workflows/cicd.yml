@@ -3,8 +3,6 @@ on:
     inputs:
       cluster:
         type: string
-      clusters:
-        type: string
 
 jobs:
   dump_contexts_to_log:
@@ -12,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cluster: ${{ inputs.cluster && fromJson(format('["{0}"]', inputs.cluster)) || fromJson(inputs.clusters) }}
+        cluster: ${{ contains(inputs.cluster, '[') && fromJson(format('["{0}"]', inputs.cluster)) || fromJson(inputs.clusters) }}
     steps:
-      - run: exit 1
-        if: matrix.cluster == 'europe'
       - run: echo ${{ matrix.cluster }}
