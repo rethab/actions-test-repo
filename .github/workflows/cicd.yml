@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cluster: ${{ contains(inputs.cluster, '[') && fromJson(format('["{0}"]', inputs.cluster)) || fromJson(inputs.clusters) }}
+        cluster: ${{ contains(inputs.cluster, '[') && fromJson(inputs.cluster) || fromJson(format('["{0}"]', inputs.cluster))  }}
     steps:
       - run: echo ${{ matrix.cluster }}
