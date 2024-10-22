@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cluster: ${{ inputs.cluster && fromJson(format('[{0}]', inputs.cluster)) || fromJson(inputs.clusters) }}
+        cluster: ${{ inputs.cluster && fromJson(format('["{0}"]', inputs.cluster)) || fromJson(inputs.clusters) }}
     steps:
       - run: echo ${{ matrix.cluster }}
