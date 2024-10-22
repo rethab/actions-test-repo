@@ -14,4 +14,6 @@ jobs:
       matrix:
         cluster: ${{ inputs.cluster && fromJson(format('["{0}"]', inputs.cluster)) || fromJson(inputs.clusters) }}
     steps:
+      - run: exit 1
+        if: matrix.cluster == 'europe'
       - run: echo ${{ matrix.cluster }}
