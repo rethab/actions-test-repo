@@ -15,4 +15,4 @@ jobs:
       matrix:
         cluster: ${{ inputs.clusters && fromJson(inputs.clusters) || fromJson(format('[{{"name":"{0}"}}]', inputs.cluster))  }}
     steps:
-      - run: echo ${{ matrix.cluster }}
+      - run: echo ${{ toJson(matrix.cluster) }}
