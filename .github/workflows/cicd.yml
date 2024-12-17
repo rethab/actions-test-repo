@@ -5,12 +5,13 @@ jobs:
   first:
     runs-on: ubuntu-latest
     outputs:
-      env-name: ${{ steps.first.outputs.env-name }}
+      env-name: ${{ steps.read-env.outputs.env-name }}
     strategy:
       matrix:
         cluster: [dev, test]
     steps:
-      - run: |
+      - id: read-env
+        run: |
           envName="${{ matrix.cluster }}"
           echo "Environment: $envName"
           echo "env-name=$envName" >> $GITHUB_OUTPUT
