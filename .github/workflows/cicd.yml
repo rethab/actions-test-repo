@@ -5,7 +5,7 @@ jobs:
   first:
     runs-on: ubuntu-latest
     outputs:
-      env-name: ${{ steps.read-env.outputs.env-name }}
+      env-name: ${{ steps.read-env.outputs[format('env-name_{0}', matrix.cluster)] }}
     strategy:
       matrix:
         cluster: [dev, test]
@@ -15,13 +15,15 @@ jobs:
           envName="${{ matrix.cluster }}"
           echo "Environment: $envName"
           echo "env-name=$envName" >> $GITHUB_OUTPUT
+          echo "env-name_${{ matrix.cluster }}=$envName" >> $GITHUB_ENV
   second:
     runs-on: ubuntu-latest
     needs: first
-    environment: ${{ needs.first.outputs.env-name }}
+    environment: ${{ needs.first.outputs[format('env-name_{0}', matrix.cluster)] }}
     strategy:
       matrix:
         cluster: [dev, test]
     steps:
       - run: echo ${{ matrix.cluster }}
       - run: echo ${{ needs.first.outputs.env-name }}
+      - run: echo ${{ needs.first.outputs[format('env-name_{0}', matrix.cluster)] }}
