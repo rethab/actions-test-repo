@@ -1,18 +1,25 @@
 on:
-  workflow_dispatch:
-    inputs:
-      cluster:
-        type: string
-        default: 'europe'
-      clusters:
-        type: string
+  push:
 
 jobs:
-  dump_contexts_to_log:
-    environment: production
+  first:
     runs-on: ubuntu-latest
+    outputs:
+      env-name: ${{ steps.first.outputs.env-name }}
     strategy:
       matrix:
-        cluster: ${{ inputs.clusters && fromJson(inputs.clusters) || fromJson(format('[{{"name":"{0}"}}]', inputs.cluster))  }}
+        cluster: [dev, test]
     steps:
-      - run: echo ${{ toJson(matrix.cluster) }}
+      - run: |
+          envName="${{ matrix.cluster }}"
+          echo "Environment: $envName"
+          echo "env-name=$envName" >> $GITHUB_OUTPUT
+  second:
+    runs-on: ubuntu-latest
+    needs: first
+    environment: ${{ needs.first.outputs.env-name }}
+    strategy:
+      matrix:
+        cluster: [dev, test]
+    steps:
+      - run: echo ${{ matrix.cluster }}
