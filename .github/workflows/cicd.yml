@@ -6,8 +6,8 @@ on:
     inputs:
       test:
         description: |
-          On the first line, I write this
-          On the second, I write this
+          On the first line, I write this\n
+          On the second, I write this<br>
 
           After an empty line, the forth one appears
         type: choice
