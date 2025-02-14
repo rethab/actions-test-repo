@@ -6,7 +6,7 @@ on:
     inputs:
       test:
         description: |
-          On the first line, I write this\n
+          On the first line, I write this&nbsp;&nbsp;&nbsp;
           On the second, I write this<br>
 
           After an empty line, the forth one appears
