@@ -1,3 +1,5 @@
+name: Workflow Dispatchy
+
 on:
   push:
   workflow_dispatch:
@@ -9,6 +11,7 @@ on:
 
           After an empty line, the forth one appears
         type: choice
+        default: something
         options:
           - something
 
