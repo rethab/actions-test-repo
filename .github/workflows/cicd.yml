@@ -1,5 +1,17 @@
 on:
   push:
+  workflow_dispatch:
+    inputs:
+      test:
+        description: |
+          On the first line, I write this
+          On the second, I write this
+
+          After an empty line, the forth one appears
+        type: choice
+        options:
+          - something
+
 
 jobs:
   first:
