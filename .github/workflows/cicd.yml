@@ -10,6 +10,5 @@ jobs:
     steps:
       - id: read-env
         run: |
-          echo one ${{ format('{0}', env[GITHUB_SERVER_URL]) }}
           echo two ${{ format('{0}', $GITHUB_SERVER_URL) }}
           echo three ${{ format('{0}', ${{ env.GITHUB_SERVER_URL }} ) }}
