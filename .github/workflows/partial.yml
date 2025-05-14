@@ -4,27 +4,12 @@ on:
   workflow_call:
     inputs:
       my-input:
-        description: provide multiple values separated by comma
+        description: no description
         required: true
         type: string
 
 jobs:
-  createMatrix:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.create-matrix.outputs.matrix }}
-    steps:
-      - id: create-matrix
-        run: |
-          INPUTS="${{ inputs.my-input }}"
-          MATRIX="{\"inputs\": [\"${INPUTS//,/\",\"}\"]}"
-          echo "$MATRIX"
-          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
-
   greet:
-    needs: createMatrix
     runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{ fromJSON(needs.createMatrix.outputs.matrix) }}
     steps:
-      - run: echo ${{ matrix.inputs }}
+      - run: echo ${{ inputs.my-input }}
