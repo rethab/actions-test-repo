@@ -7,4 +7,4 @@ jobs:
   first:
     uses: ./.github/workflows/partial.yml
     with:
-      my-input: format('{0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id)
+      my-input: ${{ format('{0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id) }}
