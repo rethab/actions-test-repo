@@ -3,6 +3,8 @@ name: Workflow Dispatchy
 on:
   push:
 
+env:
+  MY_ENV_VAR: bar
 
 jobs:
   first:
@@ -11,4 +13,6 @@ jobs:
       - id: read-env
         run: |
           echo $GITHUB_SERVER_URL
-          echo two ${{ format('{0}', $GITHUB_SERVER_URL) }}
+      - run: echo "${{ format('{0} - {1}', github.actor, env.GITHUB_SERVER_URL) }}"
+      - run: echo "${{ format('{0} - {1}', github.actor, env.MY_ENV_VAR) }}"
+
