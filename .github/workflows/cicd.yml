@@ -11,4 +11,3 @@ jobs:
       - id: read-env
         run: |
           echo two ${{ format('{0}', env['GITHUB_SERVER_URL']) }}
-          echo three ${{ format('{0}', ${{ env.GITHUB_SERVER_URL }} ) }}
