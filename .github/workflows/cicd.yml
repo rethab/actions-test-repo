@@ -10,5 +10,5 @@ jobs:
     steps:
       - id: read-env
         run: |
-          echo ${{ env.GITHUB_SERVER_URL }}
+          echo $GITHUB_SERVER_URL
           echo two ${{ format('{0}', env.GITHUB_SERVER_URL) }}
