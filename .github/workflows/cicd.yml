@@ -10,9 +10,4 @@ jobs:
   first:
     runs-on: ubuntu-latest
     steps:
-      - id: read-env
-        run: |
-          echo $GITHUB_SERVER_URL
-      - run: echo "${{ format('{0} - {1}', github.actor, env.GITHUB_SERVER_URL) }}"
-      - run: echo "${{ format('{0} - {1}', github.actor, env.MY_ENV_VAR) }}"
-
+      - run: echo format('{0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id)
