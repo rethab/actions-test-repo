@@ -2,43 +2,14 @@ name: Workflow Dispatchy
 
 on:
   push:
-  workflow_dispatch:
-    inputs:
-      test:
-        description: |
-          On the first line, I write this&nbsp;&nbsp;&nbsp;
-          On the second, I write this<br>
-
-          After an empty line, the forth one appears
-        type: choice
-        default: something
-        options:
-          - something
 
 
 jobs:
   first:
     runs-on: ubuntu-latest
-    outputs:
-      env-name: ${{ steps.read-env.outputs[format('env-name_{0}', matrix.cluster)] }}
-    strategy:
-      matrix:
-        cluster: [dev, test]
     steps:
       - id: read-env
         run: |
-          envName="${{ matrix.cluster }}"
-          echo "Environment: $envName"
-          echo "env-name=$envName" >> $GITHUB_OUTPUT
-          echo "env-name_${{ matrix.cluster }}=$envName" >> $GITHUB_ENV
-  second:
-    runs-on: ubuntu-latest
-    needs: first
-    environment: ${{ needs.first.outputs[format('env-name_{0}', matrix.cluster)] }}
-    strategy:
-      matrix:
-        cluster: [dev, test]
-    steps:
-      - run: echo ${{ matrix.cluster }}
-      - run: echo ${{ needs.first.outputs.env-name }}
-      - run: echo ${{ needs.first.outputs[format('env-name_{0}', matrix.cluster)] }}
+          echo one ${{ format('{0}', env[GITHUB_SERVER_URL]) }}
+          echo two ${{ format('{0}', $GITHUB_SERVER_URL) }}
+          echo three ${{ format('{0}', ${{ env.GITHUB_SERVER_URL }} ) }}
