@@ -10,4 +10,4 @@ jobs:
   first:
     runs-on: ubuntu-latest
     steps:
-      - run: echo format('{0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id)
+      - run: echo "format('{0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id)"
