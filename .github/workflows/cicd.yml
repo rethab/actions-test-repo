@@ -8,12 +8,12 @@ jobs:
     uses: ./.github/workflows/partial.yml
     with:
       my-input: first
-      fail: true
   second:
     needs: first
     uses: ./.github/workflows/partial.yml
     with:
       my-input: second
+      fail: true
   third:
     needs: second
     uses: ./.github/workflows/partial.yml
