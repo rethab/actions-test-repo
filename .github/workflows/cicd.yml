@@ -7,4 +7,16 @@ jobs:
   first:
     uses: ./.github/workflows/partial.yml
     with:
-      my-input: ${{ format('{0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id) }}
+      my-input: first
+      fail: true
+  second:
+    needs: first
+    uses: ./.github/workflows/partial.yml
+    with:
+      my-input: second
+  third:
+    needs: second
+    uses: ./.github/workflows/partial.yml
+    if: failure() && needs.second.result == 'failure'
+    with:
+      my-input: third

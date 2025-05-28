@@ -7,9 +7,16 @@ on:
         description: no description
         required: true
         type: string
+      fail:
+        description: no description
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ inputs.my-input }}
+      - if: inputs.fail
+        run: exit 1
