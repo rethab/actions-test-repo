@@ -1,0 +1,42 @@
+name: Sold Out Progress
+
+on:
+  schedule:
+    - cron: "0 0,6,12,18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sold-out-progress
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - id: check
+        run: |
+          today=$(date -u +%F)
+          echo "today=$today" >> "$GITHUB_OUTPUT"
+          if [ -f sold-out-progress.csv ] && grep -q "^${today};" sold-out-progress.csv; then
+            echo "recorded=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "recorded=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.check.outputs.recorded == 'false'
+        run: |
+          percent=$(./scripts/sold-out-progress.sh)
+          echo "${{ steps.check.outputs.today }};${percent}" >> sold-out-progress.csv
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sold-out-progress.csv
+          git commit -m "sold-out progress ${{ steps.check.outputs.today }}: ${percent}%"
+          git pull --rebase origin main
+          git push origin HEAD:main
